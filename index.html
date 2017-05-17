@@ -35,46 +35,93 @@
                     <h3 class="panel-title">Score:</h3>
                    <h1 id="score-number"></h1>
                 </div>
+                  <div class="panel-heading">
+                    <h5 class="panel-title">Wins:</h3>
+                   <h1 id="wins-number"></h1>
+                </div>
+                  <div class="panel-heading">
+                    <h5 class="panel-title">Losses:</h3>
+                   <h1 id="losses-number"></h1>
+                </div>
         </div>
         </div>
-
-
 
 <script type="text/javascript">
 
 var scoreNumber = 0;
+var wins = 0;
+var losses = 0;
+
 var randomNumber = Math.floor((Math.random() * 120) + 19);
-var button1Random = Math.floor((Math.random() * 12) + 1);
-var button2Random = Math.floor((Math.random() * 12) + 1);
-var button3Random = Math.floor((Math.random() * 12) + 1);
-var button4Random = Math.floor((Math.random() * 12) + 1);
-
-$('#random-number').text(randomNumber);
+	button1Random = Math.floor((Math.random() * 12) + 1);
+	button2Random = Math.floor((Math.random() * 12) + 1);
+	button3Random = Math.floor((Math.random() * 12) + 1);
+	button4Random = Math.floor((Math.random() * 12) + 1);
+	$('#random-number').text(randomNumber);
 	
-   	$('#button1').click(function(event){
-	   	$('#button1').val(button1Random);
-   		scoreNumber=scoreNumber+button1Random;
-   		$('#score-number').text(scoreNumber);
-   	})
-
-   	$('#button2').click(function(event){
-	   	$('#button2').val(button2Random);
-   		scoreNumber=scoreNumber+button2Random;
-   		$('#score-number').text(scoreNumber);
+	   	$('#button1').click(function(event){
+		   	$('#button1').val(button1Random);
+	   		scoreNumber=scoreNumber+button1Random;
+	   		$('#score-number').text(scoreNumber);
+	   		evalStats();
 	   	})
 
-   	$('#button3').click(function(event){
-	   	$('#button3').val(button3Random);
-   		scoreNumber=scoreNumber+button3Random;
-   		$('#score-number').text(scoreNumber);
-	   	})
+	   	$('#button2').click(function(event){
+		   	$('#button2').val(button2Random);
+	   		scoreNumber=scoreNumber+button2Random;
+	   		$('#score-number').text(scoreNumber);
+	   		evalStats();
+		   	})
 
-   	$('#button4').click(function(event){
-	   	$('#button4').val(button4Random);
-   		scoreNumber=scoreNumber+button4Random;
-   		$('#score-number').text(scoreNumber);
-	   	})
- 
+	   	$('#button3').click(function(event){
+		   	$('#button3').val(button3Random);
+	   		scoreNumber=scoreNumber+button3Random;
+	   		$('#score-number').text(scoreNumber);
+	   		evalStats();
+		   	})
+
+	   	$('#button4').click(function(event){
+		   	$('#button4').val(button4Random);
+	   		scoreNumber=scoreNumber+button4Random;
+	   		$('#score-number').text(scoreNumber);
+	   		evalStats();
+		   	})
+
+function evalStats(){
+
+if (scoreNumber === randomNumber) {
+		console.log("Winner!");
+		wins=wins+1;
+		scoreNumber=0;
+		$('#score-number').text(scoreNumber);
+		$('#wins-number').text(wins);
+		randomNumber = Math.floor((Math.random() * 120) + 19);
+		$('#random-number').text(randomNumber);
+		button1Random = Math.floor((Math.random() * 12) + 1);
+		button2Random = Math.floor((Math.random() * 12) + 1);
+		button3Random = Math.floor((Math.random() * 12) + 1);
+		button4Random = Math.floor((Math.random() * 12) + 1);
+	}
+
+	else if (scoreNumber < randomNumber) {
+		console.log("Keep Playing!");
+	}
+
+	else if (scoreNumber > randomNumber) {
+		console.log("Lost!");
+		losses=losses+1;
+		scoreNumber=0;
+		$('#score-number').text(scoreNumber);
+		$('#losses-number').text(losses);
+		randomNumber = Math.floor((Math.random() * 120) + 19);
+		$('#random-number').text(randomNumber);
+		button1Random = Math.floor((Math.random() * 12) + 1);
+		button2Random = Math.floor((Math.random() * 12) + 1);
+		button3Random = Math.floor((Math.random() * 12) + 1);
+		button4Random = Math.floor((Math.random() * 12) + 1);
+	}
+}
+
  </script>
    </body>
  </html>
